@@ -15,7 +15,7 @@ class KodiAddon(object):
         self.path = os.path.dirname(os.path.realpath(__file__))
     
     def run(self):
-        check_call(['bash', self.path + '/resources/lib/start.sh'])
+        check_call(['bash', '-c', 'flatpak run com.valvesoftware.SteamLink &>>./steamlink_launcher.log'])
 
 def main():
     addon = KodiAddon()

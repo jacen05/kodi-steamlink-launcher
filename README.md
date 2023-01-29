@@ -15,22 +15,13 @@ Any recent Linux distribution with following requirements:
     ```shell
     # Install SteamLink package
     flatpack install com.valvesoftware.SteamLink
-
-    # Add a lancher script
-    cat <<EOF > /usr/local/bin/steamlink
-    #!/bin/bash
-    flatpak run com.valvesoftware.SteamLink
-    EOF
-
-    # Make the launcher executable
-    chmod +x /usr/local/bin/steamlink
     ```
 
     Adapt startup command if needed For example if SteamLink was installed through a Debian package, replace the `flatpack` line with just `steamlink`.
 
 * Specfic for Openbox if used
 
-    If not running a full Desktop Environment like Gnome, KDE or XFCE, some display-related tweaks are needed to properly launch SteamLink. The starting script becomes:
+    If not running a full Desktop Environment like Gnome, KDE or XFCE, some display-related tweaks may be needed to properly launch SteamLink. A starting script could be:
 
     ```bash
     /usr/bin/xinit /usr/bin/dbus-launch --exit-with-session /usr/bin/openbox-session -- :0 -nolisten tcp vt7 &
@@ -43,19 +34,13 @@ Any recent Linux distribution with following requirements:
     sleep 3 # Allow some time for display to shutdown (needed for proper Kodi restart)
     ```
 
+    However this may not be needed, for example when launching from Kodi, the program shall be able to use the already opened display.
+
 ## Plugin installation
 
 * Log into ssh on your Kodi installation.
 
 * Download the [zip](https://github.com/jacen05/kodi-steamlink-launcher/releases) of the launcher and install it via Kodi (*Extension → Install from Zip file*). You must **allow untrusted sources** in system settings prior to this.
-
-* Setup sudo rules to allow `kodi` user to run steamlink:
-
-    ```bash
-    cat <<EOF > /etc/sudoers.d/kodi-steamlink
-    kodi ALL=(root) NOPASSWD: /usr/bin/systemd-run /home/kodi/.kodi/addons/plugin.program.steamlink/resources/lib/launcher.sh
-    EOF
-    ```
 
 * Make the launcher executable:
 
