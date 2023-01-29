@@ -42,12 +42,6 @@ Any recent Linux distribution with following requirements:
 
 * Download the [zip](https://github.com/jacen05/kodi-steamlink-launcher/releases) of the launcher and install it via Kodi (*Extension → Install from Zip file*). You must **allow untrusted sources** in system settings prior to this.
 
-* Make the launcher executable:
-
-    ```bash
-    chmod +x /home/kodi/.kodi/addons/plugin.program.steamlink/resources/lib/launcher.sh
-    ```
-
 ## Acknowledgement
 
 ```plain
